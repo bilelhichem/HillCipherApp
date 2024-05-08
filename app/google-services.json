@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "805471867607",
+    "project_id": "security-f1cad",
+    "storage_bucket": "security-f1cad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805471867607:android:3f6d03d91f488706c95692",
+        "android_client_info": {
+          "package_name": "com.example.security"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOGNYY5-_BPIUARimwwp4epZdaWlE_16Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
