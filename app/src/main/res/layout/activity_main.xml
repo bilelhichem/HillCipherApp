@@ -24,6 +24,7 @@
             android:id="@+id/btnenc"
             android:layout_marginRight="10dp"
             android:layout_width="100dp"
+            android:textColor="@color/white"
             android:layout_height="30dp"
             android:text="Encrypt"
             android:background="@drawable/bak1"
@@ -38,6 +39,7 @@
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:text="DECRYPT"
+            android:textColor="@color/black"
             android:background="@drawable/bak2"
 
 
@@ -68,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
-            android:text="Algorithme de Hill Cipher\n\n ENCRYPTION FUNCTION "
+            android:text="Hill Cipher Cryptosystem "
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,40 +78,80 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.053" />
 
-        <ImageView
-            android:id="@+id/endupload"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/baseline_cloud_upload_24">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="METHODE 01 :"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-condensed"
 
-        </ImageView>
+        >
 
-        <TextView
-            android:id="@+id/up1"
+    </TextView>
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="serif"
-            android:text=" Upload File"
-            android:textSize="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.053" />
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/endupload"
+                android:layout_width="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_upload_file_24">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/up1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="File Text"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.053" />
 
 
-        <Button
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginTop="10dp"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:text="Encrypt file"
+                android:textColor="@color/white"
+                android:background="@drawable/bak1"
+
+                android:id="@+id/encrypterfile"
+
+                >
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="METHODE 02 :"
+
+            android:textSize="20dp"
+            android:textStyle="bold"
+
             android:layout_marginTop="10dp"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:text="encrypter file"
-            android:id="@+id/encrypterfile"
+            android:fontFamily="sans-serif-condensed"
 
             >
 
-        </Button>
-
+        </TextView>
 
         <EditText
             android:id="@+id/plaintext"
@@ -117,12 +159,24 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/back0"
-            android:hint="please enter plain text."
+            android:hint="Enter the plain text"
             android:padding="10dp"
             android:textColorHint="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
         </EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ENTER THE KEY :"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-condensed"
+
+            >
+
+        </TextView>
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -205,19 +259,21 @@
 
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/ENCRYPT"
             android:layout_width="250dp"
             android:layout_height="40dp"
+            android:textColor="@color/white"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#123934"
+           android:background="@drawable/bak1"
+
             android:text="Encrypt "
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/afichierencryptresult">
 
-        </Button>
+        </androidx.appcompat.widget.AppCompatButton>
 
         <TextView
             android:id="@+id/afichierencryptresult"

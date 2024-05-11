@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -88,9 +89,13 @@ init();
         Drawable drawable1 = getResources().getDrawable(R.drawable.bak1);
         Drawable drawable2 = getResources().getDrawable(drawable.bak2);
         btnenc.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
            cmp = 0 ;
+                btnenc.setTextColor(getResources().getColor(color.white));
+                btndec.setTextColor(getResources().getColor(color.black));
+
                 btnenc.setBackground(drawable1);
                 btndec.setBackground(drawable2);
                 Linearencrypt.setVisibility(View.VISIBLE);
@@ -99,10 +104,12 @@ init();
             }
         });
         btndec.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 cmp = 1 ;
-
+                btnenc.setTextColor(getResources().getColor(color.black));
+                btndec.setTextColor(getResources().getColor(color.white));
                 btnenc.setBackground(drawable2);
                 btndec.setBackground(drawable1);
                 Linearencrypt.setVisibility(View.INVISIBLE);
