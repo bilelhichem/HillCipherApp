@@ -313,7 +313,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
-            android:text="Algorithme de Hill Cipher\n\n DECRYPTION FUNCTION "
+            android:text="Hill Cipher Cryptosystem"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -321,12 +321,24 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.053" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="METHODE 01 :"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-condensed"
+
+            >
+
+        </TextView>
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:id="@+id/uplfiledcr"
             android:scaleType="centerCrop"
-            android:src="@drawable/baseline_cloud_upload_24">
+            android:src="@drawable/baseline_upload_file_24">
 
         </ImageView>
 
@@ -335,7 +347,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
-            android:text=" Upload File"
+            android:text="File Text"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -344,15 +356,30 @@
             app:layout_constraintVertical_bias="0.053" />
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_marginTop="10dp"
             android:layout_width="140dp"
             android:layout_height="40dp"
             android:text="Decrypt file"
+            android:background="@drawable/bak1"
+            android:textColor="@color/white"
             android:id="@+id/decryptfile"
 
-            ></Button>
+            >
 
+        </androidx.appcompat.widget.AppCompatButton>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="METHODE 02 :"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-condensed"
+
+            >
+
+        </TextView>
 
         <EditText
             android:id="@+id/ciphertext"
@@ -367,6 +394,18 @@
 
         </EditText>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ENTER THE  KEY :"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-condensed"
+
+            >
+
+        </TextView>
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -448,19 +487,21 @@
         </LinearLayout>
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Decrypt"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#123934"
+            android:backgroundTint="@color/black"
             android:text="Decrypt "
             android:textSize="15dp"
+            android:textColor="@color/white"
+            android:background="@drawable/bak1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/afichierencryptresult">
 
-        </Button>
+        </androidx.appcompat.widget.AppCompatButton>
 
         <TextView
             android:id="@+id/afichierplain"
