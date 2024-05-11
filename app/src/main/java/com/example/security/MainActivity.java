@@ -60,14 +60,14 @@ import java.sql.SQLOutput;
 public class MainActivity extends AppCompatActivity {
 
     public int REQUEST_CODE = 1;
-EditText EntrerEncyptmessage  , entrerkey , ciphertext,keycipher;
+EditText EntrerEncyptmessage   , ciphertext , num1,num2,num3,num4, num5,num6,num7,num8;
 TextView afichierencryptmessage , afichierplain ,up1 , up2;
 Button ENCRYPTER ,btnenc , btndec , Decrypt ,encrypterfile , decryptfile;
 
 LinearLayout Linearencrypt , decryptionlayout ;
 ImageView endupload , uplfiledcr ;
 
-StorageReference imgref ;
+
 Uri file ;
 
 String text = null ;
@@ -113,31 +113,29 @@ init();
 
 
 
+        // Button pour encrypter plain text de methode de message
         ENCRYPTER.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
 
-             String key =  entrerkey.getText().toString();
+
              String mesage = EntrerEncyptmessage.getText().toString();
                 if (mesage.isEmpty()){
                     EntrerEncyptmessage.setError("Please don't less cipher text empty");
-                }else if (key.isEmpty()){
-                    entrerkey.setError("Please don't less key empty");
-                }else{
-                    if (HillCipher.verifierKey(key) ){
+                }if (num1.getText().toString().isEmpty() || num2.getText().toString().isEmpty() ||num3.getText().toString().isEmpty() ||num4.getText().toString().isEmpty() ){
+                    Toast.makeText(MainActivity.this, "Enter A Valid Key", Toast.LENGTH_SHORT).show();
+                } else{
+                        int [][] keymatrice =HillCipher.stringToSquareMatrix(num1.getText().toString(),num2.getText().toString(),num3.getText().toString(),num4.getText().toString());
 
-                        int [][] keymatrice =HillCipher.stringToSquareMatrix(key);
                         if (HillCipher.CalcDetermina(keymatrice)){
                             String result = HillCipher.encrypt(mesage,keymatrice);
                             afichierencryptmessage.setText(result);
                         }else {
                             Toast.makeText(MainActivity.this, "ENTER A VALID KEY", Toast.LENGTH_SHORT).show();
                         }
-                    }else {
-                        Toast.makeText(MainActivity.this, "ENTER A VALID KEY", Toast.LENGTH_SHORT).show();
-                    }
+
                 }
 
 
@@ -147,19 +145,60 @@ init();
             }
         });
 
+        // pour telecharger le file qui contient le message encrypter
+        endupload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFilePicker();
+
+
+
+            }
+        });
+
+        // button pour encrypter le file uploader
+
+        encrypterfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (num1.getText().toString().isEmpty() || num2.getText().toString().isEmpty() ||num3.getText().toString().isEmpty() ||num4.getText().toString().isEmpty() ){
+                Toast.makeText(MainActivity.this, "Enter A Valid Key", Toast.LENGTH_SHORT).show();
+            } else if  (text == null){
+                    Toast.makeText(MainActivity.this, "Please upload your file", Toast.LENGTH_SHORT).show();
+                }else {
+
+
+                    int [][] keymatrice =HillCipher.stringToSquareMatrix(num1.getText().toString(),num2.getText().toString(),num3.getText().toString(),num4.getText().toString());
+
+                    if (HillCipher.CalcDetermina(keymatrice)){
+                        String result = HillCipher.encrypt(text.toString(),keymatrice);
+                        afichierencryptmessage.setText(result);
+                    }else {
+                        Toast.makeText(MainActivity.this, "ENTER A VALID KEY", Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+
+                }
+            }});
+
+
+
         Decrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String key =  keycipher.getText().toString();
-                String mesage = ciphertext.getText().toString();
-                if (mesage.isEmpty()){
-                    ciphertext.setError("Please don't less cipher text empty");
-                }else if (key.isEmpty()){
-                    keycipher.setError("Please don't less key empty");
-                }else {
-                    if (HillCipher.verifierKey(key) ){
 
-                        int [][] keymatrice =HillCipher.stringToSquareMatrix(key);
+                String mesage = ciphertext.getText().toString();
+            if (num1.getText().toString().isEmpty() || num2.getText().toString().isEmpty() ||num3.getText().toString().isEmpty() ||num4.getText().toString().isEmpty() ){
+                Toast.makeText(MainActivity.this, "Enter A Valid Key", Toast.LENGTH_SHORT).show();
+            }else if (mesage.isEmpty()){
+                    ciphertext.setError("Please don't less cipher text empty");
+                }else {
+
+
+                        int [][] keymatrice =HillCipher.stringToSquareMatrix(num5.getText().toString(),num6.getText().toString(),num7.getText().toString(),num8.getText().toString());
+
                         if (HillCipher.CalcDetermina(keymatrice)){
                             if (mesage.isEmpty()){
                                 ciphertext.setError("Please don't less anything empty");
@@ -171,24 +210,14 @@ init();
                         }else {
                             Toast.makeText(MainActivity.this, "ENTER A VALID KEY", Toast.LENGTH_SHORT).show();
                         }
-                    }else {
-                        Toast.makeText(MainActivity.this, "ENTER A VALID KEY", Toast.LENGTH_SHORT).show();
-                    }
+
                 }
 
             }
         });
 
 
-        endupload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openFilePicker();
 
-
-
-            }
-        });
 
         uplfiledcr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,45 +229,20 @@ init();
             }
         });
 
-        encrypterfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                String key =  entrerkey.getText().toString();
-                if (key.isEmpty()){
-                    entrerkey.setError("Please don't less key empty");
-                }else if (text == null){
-                    Toast.makeText(MainActivity.this, "Please upload your file", Toast.LENGTH_SHORT).show();
-                }else {
-                    if (HillCipher.verifierKey(key) ){
-
-                        int [][] keymatrice =HillCipher.stringToSquareMatrix(key);
-                        if (HillCipher.CalcDetermina(keymatrice)){
-                            String result = HillCipher.encrypt(text.toString(),keymatrice);
-                            afichierencryptmessage.setText(result);
-                        }else {
-                            Toast.makeText(MainActivity.this, "ENTER A VALID KEY", Toast.LENGTH_SHORT).show();
-                        }
-                    }else {
-                        Toast.makeText(MainActivity.this, "ENTER A VALID KEY", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-
-            }
-        });
 
         decryptfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String key =  keycipher.getText().toString();
-                if (key.isEmpty()){
-                    keycipher.setError("Please don't less key empty");
-                }else if (textdec == null){
+            if (num1.getText().toString().isEmpty() || num2.getText().toString().isEmpty() ||num3.getText().toString().isEmpty() ||num4.getText().toString().isEmpty() ){
+                Toast.makeText(MainActivity.this, "Enter A Valid Key", Toast.LENGTH_SHORT).show();
+            }else
+             if (textdec == null){
                     Toast.makeText(MainActivity.this, "Please upload your file", Toast.LENGTH_SHORT).show();
                 }else {
-                    if (HillCipher.verifierKey(key) ){
-                        int [][] keymatrice =HillCipher.stringToSquareMatrix(key);
+
+                        int [][] keymatrice =HillCipher.stringToSquareMatrix(num5.getText().toString(),num6.getText().toString(),num7.getText().toString(),num8.getText().toString());
+
                         if (HillCipher.CalcDetermina(keymatrice)){
 
                                 String result = HillCipher.Decrypt(textdec.toString(),keymatrice);
@@ -248,9 +252,7 @@ init();
                         }else {
                             Toast.makeText(MainActivity.this, "ENTER A VALID KEY", Toast.LENGTH_SHORT).show();
                         }
-                    }else {
-                        Toast.makeText(MainActivity.this, "ENTER A VALID KEY", Toast.LENGTH_SHORT).show();
-                    }
+
                 }
             }
         });
@@ -260,7 +262,14 @@ init();
 
     public  void  init(){
         EntrerEncyptmessage = findViewById(id.plaintext);
-        entrerkey = findViewById(id.editTextKey);
+        num1 = findViewById(id.num1);
+        num2 = findViewById(id.num2);
+        num3 = findViewById(id.num3);
+        num4 = findViewById(id.num4);
+        num5 = findViewById(id.num5);
+        num6 = findViewById(id.num6);
+        num7 = findViewById(id.num7);
+        num8 = findViewById(id.num8);
         afichierencryptmessage = findViewById(id.afichierencryptresult);
         ENCRYPTER = findViewById(id.ENCRYPT) ;
         Linearencrypt = findViewById(id.encryptlayot);
@@ -269,11 +278,9 @@ init();
         decryptionlayout = findViewById(R.id.decryptionlayout);
         Decrypt = findViewById(R.id.Decrypt);
         ciphertext = findViewById(R.id.ciphertext);
-        keycipher = findViewById(R.id.keycipher);
         afichierplain = findViewById(R.id.afichierplain);
         endupload = findViewById(R.id.endupload);
         up1 = findViewById(R.id.up1);
-        imgref = FirebaseStorage.getInstance().getReference().child("fileupload");
         encrypterfile = findViewById(R.id.encrypterfile);
         decryptfile = findViewById(R.id.decryptfile);
         uplfiledcr = findViewById(R.id.uplfiledcr);

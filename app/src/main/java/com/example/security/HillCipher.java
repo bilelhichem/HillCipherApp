@@ -8,40 +8,27 @@ import java.util.Arrays;
 
 public class HillCipher {
 
-    private static final int MODULUS = 26;
-
-    public static void afficherMatrice(int[][] matrice) {
-        for (int i = 0; i < matrice.length; i++) {
-            for (int j = 0; j < matrice[i].length; j++) {
-                System.out.print(matrice[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-
-
-
+    private static final int MODULUS = 256;
 
 
     public static boolean verifierKey(String key) {
         return Math.sqrt(key.length()) % 1 == 0;
     }
 
-    public static int[][] stringToSquareMatrix(String matrixString) {
-        int size = (int) Math.sqrt(matrixString.length());
-        int[][] matrix = new int[size][size];
+    public static int[][] stringToSquareMatrix(String num1,String num2,String num3,String num4 ) {
 
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                matrix[i][j] = matrixString.charAt(i * size + j) - '0';
-            }
-        }
+        int[][] matrix = new int[2][2];
+        matrix[0][0] = Integer.valueOf(num1);
+        matrix[0][1] = Integer.valueOf(num2);
+        matrix[1][0] = Integer.valueOf(num3);
+        matrix[1][1] = Integer.valueOf(num4);
+
         return matrix;
     }
 
     public static String encrypt(String plaintext, int[][] keyMatrix) {
         StringBuilder res = new StringBuilder();
+
 
         // Padding if needed
         if (plaintext.length() % 2 != 0) {
@@ -56,40 +43,31 @@ public class HillCipher {
             int[][] matrix = new int[2][1];
 
 
-// Convert char to integer
+
             int intValue1 = (int) currentChar1;
 
             int intValue2 = (int) currentChar2;
-            matrix[0][0] = intValue1 - 65 ;
-            matrix[1][0] = intValue2 - 65 ;
 
-            if (matrix[0][0] == -1 || matrix[1][0] == -1) {
-
-                res.append(currentChar1);
-                res.append(currentChar2);
-            } else {
+            matrix[0][0] = intValue1  ;
+            matrix[1][0] = intValue2  ;
 
                 int[][] encryptedMatrix = multiplierMatrices(keyMatrix, matrix);
 
+            System.out.println(encryptedMatrix[0][0]);
+            System.out.println(encryptedMatrix[1][0]);
+
+
+
+
                 int a = encryptedMatrix[0][0] % MODULUS  ;
+
                 int b = encryptedMatrix[1][0] % MODULUS  ;
 
-                char f = (char)(a+65);
-                char v = (char)(b+65);
+
+                char f = (char)(a);
+                char v = (char)(b);
                   res.append(f );
                   res.append(v);
-
-
-
-          //       System.out.println( getCharacter(encryptedMatrix[0][0] % MODULUS ));
-            //    System.out.println( getCharacter(encryptedMatrix[1][0] % MODULUS ));
-
-            //    res.append(getCharacter(encryptedMatrix[0][0] % MODULUS ) );
-              //  res.append(getCharacter(encryptedMatrix[1][0] % MODULUS) );
-
-
-
-            }
         }
 
         return res.toString();
@@ -99,7 +77,11 @@ public class HillCipher {
 
     public  static  String Decrypt(String ciphertext , int[][]keymatriuce){
         StringBuilder res = new StringBuilder();
+
+
         int[][] inverse = MatriceMod26Inverse.inverseMatriceMod26(keymatriuce);
+
+
 
         if (inverse != null){
             for (int i = 0; i < ciphertext.length(); i += 2) {
@@ -108,8 +90,13 @@ public class HillCipher {
                 char currentChar2 = ciphertext.charAt(i + 1);
 
                 int[][] matrix = new int[2][1];
-                matrix[0][0] = crypter(currentChar1);
-                matrix[1][0] = crypter(currentChar2);
+
+                int intValue1 = (int) currentChar1;
+
+                int intValue2 = (int) currentChar2;
+
+                matrix[0][0] = intValue1;
+                matrix[1][0] = intValue2;
 
                 if (matrix[0][0] == -1 || matrix[1][0] == -1) {
 
@@ -126,18 +113,12 @@ public class HillCipher {
                     int b = decmat[1][0] % MODULUS  ;
 
 
-                    char f = (char)(a+65) ;
-                    char v = (char)(b+65) ;
+                    char f = (char)(a) ;
+                    char v = (char)(b) ;
                     res.append(f);
                     res.append(v);
 
 
-
-                    //       System.out.println( getCharacter(encryptedMatrix[0][0] % MODULUS ));
-                    //    System.out.println( getCharacter(encryptedMatrix[1][0] % MODULUS ));
-
-                    //    res.append(getCharacter(encryptedMatrix[0][0] % MODULUS ) );
-                    //  res.append(getCharacter(encryptedMatrix[1][0] % MODULUS) );
 
 
 
@@ -194,38 +175,6 @@ public class HillCipher {
         }
     }
 
-    public static char getCharacter(int equivalence) {
-        if (equivalence >= 0 && equivalence < 26) {
-
-            return (char)('A' + equivalence);
-        } else if (equivalence >= 26 && equivalence < 52) {
-
-            return (char)('a' + equivalence - 26);
-        } else if (equivalence >= 52 && equivalence < 62) {
-
-            return (char)('0' + equivalence - 52);
-        } else if (equivalence >= 62 && equivalence < 94) {
-
-            return (char)('!' + equivalence - 62);
-        } else if (equivalence >= 94 && equivalence < 127) {
-
-            return (char)('~' + equivalence - 94);
-        } else if (equivalence >= 127 && equivalence < 55296) {
-
-            return (char)(127 + equivalence - 127);
-        } else if (equivalence >= 55296 && equivalence < 57344) {
-
-            return '?';
-        } else if (equivalence >= 57344 && equivalence < 65536) {
-
-            return (char)(57344 + equivalence - 57344);
-        } else if (equivalence >= 65536 && equivalence < 1114112) {
-
-            return (char)(65536 + equivalence - 65536);
-        } else {
-            return '?';
-        }
-    }
 
     public static int[][] multiplierMatrices(int[][] matrice1, int[][] matrice2) {
         int ligneMat1 = matrice1.length;
@@ -245,24 +194,7 @@ public class HillCipher {
         return resultat;
     }
 
-    public static int[][] inverserMatrice(int[][] matrice) {
-        int determinant = matrice[0][0] * matrice[1][1] - matrice[0][1] * matrice[1][0];
 
-        // Vérification de la non-singularité de la matrice
-        if (determinant == 0) {
-            System.out.println("La matrice est singulière. L'inverse n'existe pas.");
-            return null;
-        }
-
-        // Calcul de l'inverse
-        int[][] inverse = new int[2][2];
-        inverse[0][0] = matrice[1][1] / determinant;
-        inverse[0][1] = -matrice[0][1] / determinant;
-        inverse[1][0] = -matrice[1][0] / determinant;
-        inverse[1][1] = matrice[0][0] / determinant;
-
-        return inverse;
-    }
 
 
 }

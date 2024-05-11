@@ -2,9 +2,11 @@ package com.example.security;
 
 import android.widget.Toast;
 
+import java.sql.SQLOutput;
+
 public class MatriceMod26Inverse {
 
-    private static final int MODULUS = 26;
+    private static final int MODULUS = 256;
     public static int pgcd(int a, int b) {
         while (b != 0) {
             int temp = b;
@@ -22,6 +24,7 @@ public class MatriceMod26Inverse {
         int n = matrice.length;
         int[][] adjointe = adjointeMatrice(matrice);
         int determinant = determinant(matrice);
+        System.out.println(isPGCDOne(determinant));
         if (isPGCDOne(determinant)) {
             int inverseDeterminant = trouverInverseMod26(determinant);
 

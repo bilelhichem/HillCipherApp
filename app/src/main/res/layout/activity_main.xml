@@ -123,23 +123,86 @@
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
         </EditText>
-
-        <EditText
-            android:id="@+id/editTextKey"
+        <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/back0"
-            android:hint="Please enter the key"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="12dp"
-            android:textColor="@android:color/black"
-            android:textColorHint="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/plaintext"
-            tools:layout_editor_absoluteX="20dp" />
+            android:orientation="vertical"
+
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+
+                >
+                <EditText
+                    android:id="@+id/num1"
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:hint="1"
+                    android:textColor="@color/black"
+                    android:background="@drawable/bak7"
+
+                    >
+
+                </EditText>
+
+                <EditText
+                    android:id="@+id/num2"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:hint="2"
+                    android:textColor="@color/black"
+                    android:background="@drawable/bak7"
+
+                    >
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+
+                >
+                <EditText
+                    android:id="@+id/num3"
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:hint="3"
+                    android:textColor="@color/black"
+                    android:background="@drawable/bak7"
+
+                    >
+
+                </EditText>
+
+                <EditText
+                    android:id="@+id/num4"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:hint="4"
+                    android:textColor="@color/black"
+                    android:background="@drawable/bak7"
+
+                    >
+
+                </EditText>
+            </LinearLayout>
+
+        </LinearLayout>
+
 
 
         <Button
@@ -166,7 +229,9 @@
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editTextKey" />
+            />
+
+
 
 
     </LinearLayout>
@@ -246,22 +311,85 @@
 
         </EditText>
 
-        <EditText
-            android:id="@+id/keycipher"
+        <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/back0"
-            android:hint="Please enter the key"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="12dp"
-            android:textColor="@android:color/black"
-            android:textColorHint="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/plaintext"
-            tools:layout_editor_absoluteX="20dp" />
+            android:orientation="vertical"
+
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+
+                >
+                <EditText
+                    android:id="@+id/num5"
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:hint="1"
+                    android:textColor="@color/black"
+                    android:background="@drawable/bak7"
+
+                    >
+
+                </EditText>
+
+                <EditText
+                    android:id="@+id/num6"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:hint="2"
+                    android:textColor="@color/black"
+                    android:background="@drawable/bak7"
+
+                    >
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+
+                >
+                <EditText
+                    android:id="@+id/num7"
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:hint="3"
+                    android:textColor="@color/black"
+                    android:background="@drawable/bak7"
+
+                    >
+
+                </EditText>
+
+                <EditText
+                    android:id="@+id/num8"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:hint="4"
+                    android:textColor="@color/black"
+                    android:background="@drawable/bak7"
+
+                    >
+
+                </EditText>
+            </LinearLayout>
+
+        </LinearLayout>
 
 
         <Button
@@ -288,7 +416,7 @@
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editTextKey" />
+             />
 
 
     </LinearLayout>
